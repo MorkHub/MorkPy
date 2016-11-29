@@ -24,7 +24,7 @@ def random_oper(min=0,max=100):
     oper = randrange(len(opers))
     return eval ('{}{}{}'.format(x,opers[oper],y))
 
-class MyObject:
+class rand:
     def __add__ (self, other):
         return random_oper()
     def __sub__ (self,other):
@@ -61,3 +61,10 @@ class MyObject:
         return 1
     def __float__(self):
         return 1.0
+
+    def __repr__ (self):
+        return 'True'
+    def __hash__(self):
+        return 1
+    def __len__(self):
+        return 0

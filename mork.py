@@ -17,6 +17,9 @@ def input (prompt='Input a number: ',type=int,error='Error - Wrong Type',ascii=F
                 continue
     return temp
 
+def nth_root(square, n):
+    return square ** (1/n)
+
 def random_oper(min=0,max=100):
     x = randrange(min,max)
     y = randrange(min,max)

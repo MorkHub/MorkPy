@@ -104,8 +104,8 @@ def calculatePostfix(tokens):
             stack.append(token)
             continue
 
-        right = toNum(stack.pop())
-        left = toNum(stack.pop())
+        right = float(stack.pop())
+        left = float(stack.pop())
 
         if token == '+':
             stack.append(left + right)
@@ -118,20 +118,12 @@ def calculatePostfix(tokens):
 
     return stack.pop()
 
-def toNum(string):
-    """Convert string to an appropriate numerical data type"""
-    try:
-        return int(string)
-    except ValueError:
-        return float(string)
-
-
 def calculate(string):
     """Pipe string through conversion functions and receive output of mathematical operations"""
     return calculatePostfix(toPostfix(tokenise(string)))
 
-
 if __name__ == "__main__":
     while True:
         infix = input("Enter an equation: ")
-        print(calculate(toPostfix(tokenise(infix))))
+        print(calculate(infix))
+

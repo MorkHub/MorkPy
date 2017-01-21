@@ -1,2 +1,2 @@
 # MorkPy
-Small little python module for useful python stuff
+Small little python package for useful python stuff

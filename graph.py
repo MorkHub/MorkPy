@@ -2,10 +2,12 @@
 	graph.py v1.0.1 by Mark Cockburn <mork@themork.co.uk>
 '''
 
-def draw (data=[],height=10,find=lambda d: d):
+sentinel = object()
+def draw (data=[],height=10,find=lambda d: d,labels=sentinel):
     if data == []:
         return ''
 
+    if labels is sentinel: labels = [find(x) for x in data]
     string = ''
 
     largest = 0
@@ -14,15 +16,15 @@ def draw (data=[],height=10,find=lambda d: d):
             largest = find(x)
 
     for y in range(height,0,-1):
-        for x in data:
-            if round(find(x) / largest * height) >= y:
-                string += '█'*len(str(find(x))) + ' '
+        for x in range(len(data)):
+            if round(find(data[x]) / largest * height) >= y:
+                string += '█'*(len(str(labels[x])) if x < len(labels) else 1) + ' '
             else:
-                string += ' '*len(str(find(x))) + ' '
+                string += ' '*(len(str(labels[x])) if x < len(labels) else 1) + ' '
         string += '\n'
 
-    for x in data:
-        string += str(find(x)) + ' '
+    for label in labels[:len(data)]:
+        string += str(label) + ' '
     string += '\n'
 
     return string

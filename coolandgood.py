@@ -5,6 +5,7 @@ class cool:
     return str(self) + ' and ' + str(other)
   def __str__ (self):
     return self.value
+    # test
 
 class good:
   def __init__ (self):
